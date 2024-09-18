@@ -3,7 +3,7 @@ from behave import given, when, then
 from time import sleep
 
 
-#@given('Open the Target.com')
+@given('Open the Target.com')
 def open_main(context):
     context.driver.get('https://www.target.com/')
     sleep(4)
@@ -27,5 +27,3 @@ def verify_results(context):
     expected_result = ''
     assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
     print('test case is passed')
-
-
