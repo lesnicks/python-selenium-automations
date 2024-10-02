@@ -1,32 +1,39 @@
-from selenium.webdriver.common.by import By
-from behave import given, when, then
-from time import sleep
-
-
-SEARCH_INPUT = (By.NAME, 'q')
-SEARCH_SUBMIT = (By.NAME, 'btnK')
-
-
-@given('Open Google page')
-def open_google(context):
-    context.driver.get('https://www.google.com/')
-
-
-@when('Input {search_word} into search field')
-def input_search(context, search_word):
-    search = context.driver.find_element(*SEARCH_INPUT)
-    search.clear()
-    search.send_keys(search_word)
-    sleep(4)
-
-
-@when('Click on search icon')
-def click_search_icon(context):
-    context.driver.find_element(*SEARCH_SUBMIT).click()
-    sleep(1)
-
-
-@then('Product results for {search_word} are shown')
-def verify_found_results_text(context, search_word):
-    assert search_word.lower() in context.driver.current_url.lower(), \
-        f'Expected query not in {context.driver.current_url.lower()}'
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support import expected_conditions as EC
+# from behave import given, when, then
+# from time import sleep
+#
+# ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[id*='addToCartButton']")
+# ADD_TO_CART_BTN_SIDE_NAV = (By.CSS_SELECTOR, "[data-test='content-wrapper'] [id*='addToCart']")
+# CART_SUMMARY = (By.XPATH, "//div[./span[contains(text(), 'subtotal')]]")
+# SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "[data-test='content-wrapper'] h4")
+#
+#
+# @then('Click on Add to Cart button')
+# def click_add_to_cart(context):
+#     context.driver.find_element(*ADD_TO_CART_BTN).click()  # always clicks on 1st Add to cart btn
+#     context.driver.wait.until(
+#         EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
+#         message='Side navigation product name not visible'
+#     )
+#
+#
+# @when('Store product name')
+# def store_product_name(context):
+#     context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
+#     print(f'Product stored: {context.product_name}')
+#
+#
+# @then('Confirm Add to Cart button from side navigation')
+# def click_add_to_cart_side_bar(context):
+#     context.driver.find_element(*ADD_TO_CART_BTN_SIDE_NAV).click()
+#     sleep(3)
+#
+#
+# #@then('Verify cart has {amount} item(s)')
+# def verify_add_to_cart(context):
+#     #Click Sign In
+#     context.driver.find_element(CART_SUMMARY).click()
+#     sleep(1)
+#
+#

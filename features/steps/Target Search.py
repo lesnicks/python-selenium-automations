@@ -15,7 +15,7 @@ def search_product(context, item):
     context.driver.find_element(By.ID, 'search').send_keys(item)
     # Search button => click
     context.driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
-    sleep(2)  # Wait for page to load
+    sleep(8)  # Wait for page to load
 
 @then('Verify that correct search results shown for {product}')
 def verify_cart_empty(context, product):
