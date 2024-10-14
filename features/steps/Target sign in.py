@@ -11,21 +11,23 @@ def open_main(context):
 @when('Click on sign in')
 def search_product(context):
     #Click cart
-    context.driver.find_element(By.CSS_SELECTOR, value='.sc-58ad44c0-3 kwbrXj h-margin-r-x3').click()
+    context.driver.find_element(By.CSS_SELECTOR, value='.sc-58ad44c0-3.kwbrXj.h-margin-r-x3').click()
     sleep(5)  # wait for search results page to load
 
 
 @then('From right side navigation menu, click Sign In')
 def verify_results(context):
-    context.driver.find_element(By.CSS_SELECTOR, value='.sc-859e7637-0 hHZPQy').click()
+    context.driver.find_element(By.CSS_SELECTOR, value='.sc-859e7637-0.hHZPQy').click()
     sleep(5)
 
 @then('Verify Sign In form opened')
 def verify_results(context):
-    context.driver.find_element(By.CSS_SELECTOR, value='.sc-58ad44c0-3 kwbrXj h-margin-r-x3').click()
-    actual_result = context.driver.find_element(By.CSS_SELECTOR, value='.sc-859e7637-0 hHZPQy').click()
-    expected_result = ''
+    # Verification
+    actual_result = context.driver.find_element(By.CSS_SELECTOR, value='.sc-fe064f5c-0.sc-315b8ab9-2.WObnm.gClYfs').text
+    expected_result = 'Sign into your Target account'
     assert expected_result in actual_result, f'Expected {expected_result}, got actual {actual_result}'
-    print('test case is passed')
+    print('Test case Passed')
+
+    context.driver.quit()
 
 
