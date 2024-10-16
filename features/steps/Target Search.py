@@ -19,7 +19,4 @@ def search_product(context, item):
 
 @then('Verify that correct search results shown for {product}')
 def verify_cart_empty(context, product):
-    # Verification
-    actual_result = context.driver.find_element(By.CSS_SELECTOR, value="[data-test='boxEmptyMsg'] h1").text
-    expected_result = 'Your cart is empty'
-    assert expected_result == actual_result, f'Expected {expected_result}, did not match {actual_result}'
+    context.app.search_results_page.verify_results(product)

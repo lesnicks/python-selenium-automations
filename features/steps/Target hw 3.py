@@ -6,6 +6,7 @@ from time import sleep
 def open_main(context):
     context.driver.get('https://www.target.com/')
     sleep(5)
+    context.app.main_page.open_main()
 
 @when('Click on Cart icon')
 def click_cart(context):

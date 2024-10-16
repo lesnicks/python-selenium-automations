@@ -6,7 +6,7 @@ from time import sleep
 def open_main(context):
     context.driver.get('https://www.target.com/')
     sleep(1)
-
+    context.app.main_page.open_main()
 
 @given('Open Target-Circle')
 def open_main(context):
@@ -14,13 +14,9 @@ def open_main(context):
     sleep(1)
 
 
-# @when('Search for {item}')
-# def search_product(context, item):
-#     #Search Field - Enter text
-#     context.driver.find_element(By.ID, value='search').send_keys(item)
-#     #After Text - Click Search
-#     context.driver.find_element(By.XPATH, value="//button[@data-test='@web/Search/SearchButton']").click()
-#     sleep(1) # Wait for page to load
+@when('Search for {item}')
+def search_product(context, item):
+    context.app.header.search_product(item)
 
 
 #@when('Click on Cart icon')
