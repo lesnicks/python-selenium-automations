@@ -3,7 +3,7 @@ from pages.header import Header
 from pages.main_page import MainPage
 from pages.search_results_page import SearchResultPage
 from pages.cart_page import CartPage
-
+from pages.sign_in import SignIn
 
 class Application:
 
@@ -13,3 +13,5 @@ class Application:
         self.header = Header(driver)
         self.search_results_page = SearchResultPage(driver)
         self.cart_page = CartPage(driver)
+        self.sign_in = SignIn(driver)
+
