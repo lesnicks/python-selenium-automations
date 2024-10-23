@@ -4,8 +4,8 @@ from time import sleep
 
 @given('Open the target.com')
 def open_main(context):
-    context.driver.get('https://www.target.com/')
-    sleep(1)
+    # context.driver.get('https://www.target.com/')
+    # sleep(1)
     context.app.main_page.open_main()
 
 @given('Open Target-Circle')
@@ -38,3 +38,28 @@ def search_product(context):
     #Click Sign In
     context.driver.find_element(By.CSS_SELECTOR, value='.sc-58ad44c0-3.kwbrXj.h-margin-r-x3').click()
 #    sleep(5) # Wait for page to load
+
+
+@given('Open target main page')
+def open_main(context):
+    # context.driver.get('https://www.target.com/')
+    # sleep(5)
+    context.app.main_page.open_main()
+
+
+@when('Click on Cart icon')
+def click_cart(context):
+    #Click Cart
+    # context.driver.find_element(By.CSS_SELECTOR, value="[data-test='@web/CartLink']").click()
+    # sleep(5) # Wait for page to load
+    context.app.main_page.click_cart()
+
+
+@then('Verify Cart is empty')
+def verify_cart_empty(context):
+    context.app.cart_page.verify_cart_empty()
+    # # Verification
+    # actual_result = context.driver.find_element(By.CSS_SELECTOR, "[data-test='boxEmptyMsg'] h1").text
+    # expected_result = 'Your cart is empty'
+    # assert expected_result == actual_result, f'Expected {expected_result}, did not match {actual_result}'
+    # print('Test case Passed')
